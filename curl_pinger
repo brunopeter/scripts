@@ -1,0 +1,18 @@
+#!/bin/bash
+
+declare -a sites=(
+  "https://192.168.1.1/"
+  "https://www.google.com/"
+  "https://www.yahoo.com/"
+  )
+
+while (( 1 )); do
+  for site in "${sites[@]}"; do
+    NOW=`date +%T`
+    curl_out=`curl -k -w "dns_resolution: %{time_namelookup}, tcp_established: %{time_connect}, ssl_handshake: %{time_appconnect}, TTFB: %{time_starttransfer}\n" -o /dev/null -s "$site"` 
+  
+    echo "$NOW, $curl_out"
+    sleep 2
+  done
+  echo ""
+done
