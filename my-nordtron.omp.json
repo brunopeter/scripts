@@ -14,7 +14,8 @@
         {
           "foreground": "#88c0d0",
           "properties": {
-            "style": "full"
+            "style": "agnoster_short",
+            "max_depth": 3
           },
           "style": "plain",
           "template": " [</>{{ .Path }}<#5e81ac>]</>",
